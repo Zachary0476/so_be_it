@@ -1,0 +1,26 @@
+{
+	"presets": [
+		[
+			"@babel/preset-env",
+			{
+				"targets": "> 0.25%, not dead", // 预设浏览器兼容配置
+				"useBuiltIns": "usage", // 按需引入polyfill 
+				"corejs": 3 // 按需引入polyfill
+			}
+		],
+		[
+			"@babel/preset-react" // react
+		]
+	],
+	"plugins": [
+		[
+			"@babel/plugin-proposal-object-rest-spread" // 提供js对象展开运算符支持
+		],
+		[
+			"@babel/plugin-transform-runtime" // 版本语法转换
+		],
+		[
+			"@babel/plugin-proposal-class-properties" // 支持class
+		]
+	]
+}
