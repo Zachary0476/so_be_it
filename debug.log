@@ -70,3 +70,36 @@
 [0929/165705.847:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
 [0929/170043.224:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
 [0929/170043.277:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/104230.144:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/104230.202:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/104454.424:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/104454.494:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/104635.030:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/104635.086:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/104855.978:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/104856.030:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/104936.475:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/113201.690:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/113201.765:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/130410.814:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/130620.156:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/130620.314:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/130903.703:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131116.977:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/131117.023:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131239.639:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131434.769:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131513.622:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131535.687:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/131535.775:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131613.833:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/131641.468:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/131641.536:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/133448.320:ERROR:exit_code_watcher_win.cc(87)] Failed to wait for process exit or stop event
+[0930/133448.712:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/143245.470:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/143438.998:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/143511.075:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/143634.031:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/143906.045:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
+[0930/144824.883:ERROR:registration_protocol_win.cc(131)] TransactNamedPipe: 管道已结束。 (0x6D)
