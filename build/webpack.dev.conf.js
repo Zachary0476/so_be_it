@@ -1,13 +1,14 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf.js');
+const config = require('../config')
 
 module.exports = merge(baseConfig, {
 	mode: 'development',
 	devServer: {
 		contentBase: path.join(__dirname, "../src/assets/"),
 		compress: true,
-		host: "localhost",
+		host: "0.0.0.0",
 		hot: true,
 		inline: true,
 		noInfo: true,
@@ -18,8 +19,7 @@ module.exports = merge(baseConfig, {
 			aggregateTimeout: 300,
 			ignored: /node_modules/,
 		},
-		proxy: {
-		},
+		proxy: config.dev.proxyTable
 	},
 	devtool: 'cheap-module-eval-source-map'
 })

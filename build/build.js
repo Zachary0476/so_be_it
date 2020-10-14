@@ -1,11 +1,5 @@
 'use strict'
 require('./check-versions')()
-
-/**
-* @update 2018-10-23 10:28:53
-* @by 10251
-* @description 获取执行打包时的环境，默认按prod打包
-*/
 let env = process.env.NODE_ENV || 'prod'
 
 const ora = require('ora')
@@ -27,7 +21,7 @@ rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), err => {
     process.stdout.write(stats.toString({
       colors: true,
       modules: false,
-      children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+      children: false, 
       chunks: false,
       chunkModules: false
     }) + '\n\n')

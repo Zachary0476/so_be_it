@@ -129,7 +129,7 @@ module.exports = {
 		new FriendlyErrorsPlugin({
 			// 运行成功
 			compilationSuccessInfo: {
-				messages: process.env.NODE_ENV === 'development' ? '' : [chalk.blue('The project is Running at:localhost:10214...')]
+				messages: process.env.NODE_ENV === 'development' ? [chalk.blue('The project is Running at: http://0.0.0.0:10214')] : ''
 			},
 			//  运行错误
 			onErrors: function (severity, errors) {
