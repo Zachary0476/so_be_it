@@ -11,6 +11,7 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'); // 友好提示
 const notifier = require('node-notifier'); // 配合友好提示
 const chalk = require('chalk');
+console.log(path.join(__dirname))
 
 module.exports = {
 	entry: path.resolve(__dirname, '../src/index.js'),
@@ -23,9 +24,9 @@ module.exports = {
 		rules: [
 			// js-loader
 			{
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
+				test: /\.js|jsx$/,
 				loader: 'happypack/loader?id=happyBabel',
+				exclude: /(node_modules|bower_components)/,
 			},
 			// ts-loader
 			{ test: /\.tsx?$/, loader: "ts-loader" },
@@ -114,7 +115,7 @@ module.exports = {
 			title: 'myApp',
 			template: path.join(__dirname, '../src/index.html'),
 			filename: 'index.html',
-			// favicon: '',
+			favicon: path.join(__dirname, '../favicon.ico'),
 			inject: true,
 			hash: true,
 			// chunks 多页
@@ -152,7 +153,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.ts', 'tsx', '.jsx', '.js', 'json'],
 		alias: {
-			'@': path.resolve(__dirname, 'src')
+			'@': path.join(__dirname, 'src')
 		}
 	},
 	optimization: {

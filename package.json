@@ -15,6 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime": "^7.11.2",
+    "axios": "^0.20.0",
     "chalk": "^4.1.0",
     "core-js": "^3.6.5",
     "cross-env": "^7.0.2",
@@ -25,6 +26,8 @@
     "ora": "^5.1.0",
     "os": "^0.1.1",
     "postcss": "^8.1.1",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "rm": "^0.1.8",
     "semver": "^7.3.2",
     "shell": "^0.5.0",

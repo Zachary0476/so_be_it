@@ -3,7 +3,7 @@ const router = express.Router()
 
 
 
-router.get('/proxy', (req, res, next) => {
+router.get('/abc', (req, res, next) => {
 	res.send('123')
 })
 

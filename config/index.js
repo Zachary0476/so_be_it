@@ -10,8 +10,6 @@ module.exports = {
 			}
 		},
 	},
-
 	build: {
-
 	}
 }
