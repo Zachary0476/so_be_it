@@ -1,10 +1,19 @@
 import React from 'react'
 import ReactDom from 'react-dom';
-import { Provider } from "react-redux";
-import App from './views/App';
-// import store from './store/index'
+import App from './pages/App';
+import { errRoutes } from '@/router/index'
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect,
+} from 'react-router-dom'
 
-ReactDom.render(<App />, document.getElementById('app'));
-// ReactDom.render(<Provider store={store}>
-// 	<App />
-// </Provider>, document.getElementById('app'));
+ReactDom.render(<Router>
+	<Route path="/index" render={routeProps => <App {...routeProps} />}></Route>
+	<Switch>
+		{errRoutes.map(route => { return <Route key={route.path} path={route.path} component={route.component}></Route> })}
+	</Switch>
+	<Redirect to="/404" />
+</Router>, document.getElementById('app'));
+

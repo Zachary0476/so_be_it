@@ -151,9 +151,9 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: ['.ts', 'tsx', '.jsx', '.js', 'json'],
+		extensions: ['.jsx', '.js', 'json'],
 		alias: {
-			'@': path.join(__dirname, 'src')
+			'@': path.join(__dirname, '../src')
 		}
 	},
 	optimization: {
