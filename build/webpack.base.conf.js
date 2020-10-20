@@ -5,13 +5,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css抽离
 const TerserPlugin = require('terser-webpack-plugin'); // css压缩
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HappyPack = require('happypack'); // 打包进程优化
 const os = require('os'); // 配合多进程打包
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'); // 友好提示
 const notifier = require('node-notifier'); // 配合友好提示
 const chalk = require('chalk');
-console.log(path.join(__dirname))
+
 
 module.exports = {
 	entry: path.resolve(__dirname, '../src/index.js'),
@@ -66,7 +67,7 @@ module.exports = {
 			},
 			// 图片文件
 			{
-				test: /\.(png|jpg|jpeg|gif)$/i,
+				test: /\.(png|jpg|jpeg|gif|ico)$/i,
 				use: [
 					{
 						loader: 'url-loader',
@@ -99,6 +100,16 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
+		new CopyWebpackPlugin(
+			{
+				patterns: [
+					{
+						from: path.join(__dirname, '../src/assets/imgs'),
+						to: path.join(__dirname, '../dist/img')
+					}
+				],
+			}
+		),
 		new HappyPack({
 			//用id来标识 happypack处理那里类文件
 			id: 'happyBabel',

@@ -1,11 +1,13 @@
 import React from 'react'
-import { mainRoutes } from '../router/index'
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom'
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
+import { mainRoutes } from '@/router/index' //引入routerdom
+import Home from '@/pages/index/home' //引入routerdom
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Redirect,
+// } from 'react-router-dom'
 
 class App extends React.Component {
   constructor() {
@@ -13,22 +15,26 @@ class App extends React.Component {
   }
   render() {
     return (
-      <Router>
-        <Switch>
-          {mainRoutes.map((route) => {
-            return (
-              <Route
-                key={route.path}
-                {...route}
-                render={(routeProps) => {
-                  return <route.Component {...routeProps} />
-                }}
-              />
-            )
-          })}
-          <Redirect to="/404" />
-        </Switch>
-      </Router>
+      <div>
+        <h1>我是app组件</h1>
+        <HashRouter>
+          <Switch>
+            {mainRoutes.map((route) => {
+              return (
+                <Route
+                  key={route.path}
+                  exact
+                  {...route}
+                  render={(routeProps) => {
+                    return <route.component {...routeProps} />
+                  }}
+                ></Route>
+              )
+            })}
+            <Redirect to="/404" />
+          </Switch>
+        </HashRouter>
+      </div>
     )
   }
 }
