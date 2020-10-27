@@ -63,7 +63,8 @@ module.exports = {
 						}
 					}
 				],
-				exclude: /node_modules/
+				exclude: /node_modules/,
+				sideEffects: true
 			},
 			// 图片文件
 			{

@@ -4,7 +4,7 @@ const Login = React.lazy(() => import(/* webpackChunkName: "login" */ `@/pages/l
 const notFound = React.lazy(() => import(/* webpackChunkName: "not-found" */ `@/pages/common/not-found`))
 /* 核心路由 */
 const Index = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/index`))
-const Home = React.lazy(() => import(/* webpackChunkName: "/index/home" */ `@/pages/index/home`))
+const Home = React.lazy(() => import(/* webpackChunkName: "/home" */ `@/pages/home`))
 // ...
 
 
@@ -24,12 +24,12 @@ export const errRoutes = [
 /* =========================================对应以上构建在App组件下的核心路由 start================================================= */
 export const mainRoutes = [
 	{
-		path: '/index',
+		path: '/auth/index',
 		component: Index,
 		exact: true
 	},
 	{
-		path: '/index/home',
+		path: '/auth/home',
 		component: Home,
 		exact: true
 	}

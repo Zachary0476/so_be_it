@@ -1,13 +1,6 @@
 import React from 'react'
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
 import { mainRoutes } from '@/router/index' //引入routerdom
-import Home from '@/pages/index/home' //引入routerdom
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Redirect,
-// } from 'react-router-dom'
 
 class App extends React.Component {
   constructor() {
@@ -16,7 +9,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>我是app组件</h1>
         <HashRouter>
           <Switch>
             {mainRoutes.map((route) => {
@@ -31,7 +23,7 @@ class App extends React.Component {
                 ></Route>
               )
             })}
-            <Redirect to="/404" />
+            {/* <Redirect to="/404" /> */}
           </Switch>
         </HashRouter>
       </div>

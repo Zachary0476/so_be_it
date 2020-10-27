@@ -1,33 +1,18 @@
-/*
- * action 类型
- */
+import { get } from 'axios';
 
-export const ADD_TODO = 'ADD_TODO';
-export const TOGGLE_TODO = 'TOGGLE_TODO'
-export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER'
-
-/*
- * 其它的常量
- */
-
-export const VisibilityFilters = {
-	SHOW_ALL: 'SHOW_ALL',
-	SHOW_COMPLETED: 'SHOW_COMPLETED',
-	SHOW_ACTIVE: 'SHOW_ACTIVE'
+const getData = () => {
+	return get('http://jsonplaceholder.typicode.com/posts')
 }
 
-/*
- * action 创建函数
- */
-
-export function addTodo(text) {
-	return { type: ADD_TODO, text }
+export const COUNT_ADD = {
+	type: 'COUNT_ADD',
+	payload: {}
 }
 
-export function toggleTodo(index) {
-	return { type: TOGGLE_TODO, index }
-}
-
-export function setVisibilityFilter(filter) {
-	return { type: SET_VISIBILITY_FILTER, filter }
+export const getPost = async (dispatch) => {
+	const res = await getData()
+	dispatch({
+		type: 'POST_DATA',
+		payload: res.data
+	})
 }
