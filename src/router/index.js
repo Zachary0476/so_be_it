@@ -20,16 +20,15 @@ export const errRoutes = [
 ]
 /* -----------------------------------------对应以上固定路由 end------------------------------------------------------------------- */
 
-
 /* =========================================对应以上构建在App组件下的核心路由 start================================================= */
 export const mainRoutes = [
 	{
-		path: '/auth/index',
+		path: '/index',
 		component: Index,
 		exact: true
 	},
 	{
-		path: '/auth/home',
+		path: '/home',
 		component: Home,
 		exact: true
 	}

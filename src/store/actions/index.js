@@ -6,7 +6,7 @@ const getData = () => {
 
 export const COUNT_ADD = {
 	type: 'COUNT_ADD',
-	payload: {}
+	payload: ''
 }
 
 export const getPost = async (dispatch) => {

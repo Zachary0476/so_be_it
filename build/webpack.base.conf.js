@@ -19,6 +19,7 @@ module.exports = {
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: 'js/[name].[hash:8].bundle.js',
+		chunkFilename: 'js/[name]-[contenthash:7].js',
 		publicPath: '/'
 	},
 	module: {
@@ -28,6 +29,7 @@ module.exports = {
 				test: /\.js|jsx$/,
 				loader: 'happypack/loader?id=happyBabel',
 				exclude: /(node_modules|bower_components)/,
+				include: path.resolve(__dirname, '../src')
 			},
 			// ts-loader
 			{ test: /\.tsx?$/, loader: "ts-loader" },
@@ -136,7 +138,7 @@ module.exports = {
 			// 	filename: devMode ? '[name].css' : '[name].[hash].css',
 			//  chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
 			filename: 'css/[name].[hash:5].css', // 入口模块文件输出
-			chunkFilename: '[id].[hash:5].css', // 非入口模块文件输出
+			chunkFilename: 'css/[id].[hash:5].css', // 非入口模块文件输出
 		}),
 		// 友好的终端错误显示方式
 		new FriendlyErrorsPlugin({

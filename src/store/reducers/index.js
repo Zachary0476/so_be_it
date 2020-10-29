@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-import { countReducer } from './countReducer';
-import { postReducer } from './postReducer';
+import { count } from './countReducer';
+import { post } from './postReducer';
 
-const rootReducer = combineReducers({ countReducer, postReducer })
+const rootReducer = combineReducers({ count, post })
 
 export default rootReducer

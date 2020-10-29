@@ -1,0 +1,23 @@
+{
+  "id": "2163653",
+  "name": "zachary",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "4630724",
+      "name": "account authority",
+      "font_class": "accountauthority",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
+      "icon_id": "4630730",
+      "name": "information",
+      "font_class": "information",
+      "unicode": "e610",
+      "unicode_decimal": 58896
+    }
+  ]
+}
