@@ -9,10 +9,10 @@ export default class Login extends React.Component {
   }
   formRef = React.createRef()
 
-  onReset = () => {
+  onReset() {
     this.formRef.current.resetFields()
   }
-  onFinish = (values) => {
+  onFinish(values) {
     this.props.history.push('/home')
   }
   render() {
@@ -33,7 +33,7 @@ export default class Login extends React.Component {
               name="normal_login"
               className="login-form"
               initialValues={{ remember: true }}
-              onFinish={this.onFinish}
+              onFinish={() => this.onFinish()}
             >
               <Form.Item
                 name="username"
@@ -87,6 +87,7 @@ export default class Login extends React.Component {
               <Form.Item>
                 <Button
                   type="primary"
+                  htmlType="submit"
                   className={`${loginStyle.login_btn} login-form-button`}
                 >
                   登录
@@ -95,7 +96,7 @@ export default class Login extends React.Component {
                   type="Default"
                   className="login-form-button"
                   htmlType="button"
-                  // onClick={this.onReset}
+                  onClick={() => this.onReset()}
                 >
                   重置
                 </Button>

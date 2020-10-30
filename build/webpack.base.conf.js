@@ -3,7 +3,6 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const ExtractTextPlugin = require("extract-text-webpack-plugin"); 被mini-css..替代
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css抽离
-const TerserPlugin = require('terser-webpack-plugin'); // css压缩
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HappyPack = require('happypack'); // 打包进程优化
@@ -15,7 +14,10 @@ const chalk = require('chalk');
 
 
 module.exports = {
-	entry: path.resolve(__dirname, '../src/index.js'),
+	entry: {
+		"main": path.resolve(__dirname, '../src/index.js'),
+		// "vendor_react": ["react", "react-dom", "react-router", "react-router-dom", "react-redux", "redux", "redux-thunk"]
+	},
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: 'js/[name].[hash:8].bundle.js',
@@ -169,52 +171,5 @@ module.exports = {
 		alias: {
 			'@': path.join(__dirname, '../src')
 		}
-	},
-	optimization: {
-		// minimize: true, // 根据mode区分优化策略
-		splitChunks: {
-			chunks: 'all',
-			// minSize: 20000, // 最小分割大小
-			// maxAsyncRequests: 30, // 按需加载时的最大并行请求数。
-			// maxInitialRequests: 30, // 入口点的最大并行请求数。
-			automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
-			cacheGroups: {
-				defaultVendors: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					minChunks: 2,
-					priority: -10,
-				},
-				default: {
-					name: 'common',
-					minChunks: 2,
-					priority: -20,
-					reuseExistingChunk: true // 已提取复用
-				}
-			}
-		},
-		minimizer: [
-			new TerserPlugin({
-				exclude: /node_modules/,
-				// cache: true, // webpack 5已忽略 默认就是true
-				parallel: true, // 多进程并行运行 强烈建议使用
-				// sourceMap: true, // 如果在生产环境中使用 source-maps，必须设置为 true
-				terserOptions: {
-					ecma: undefined,
-					parse: {},
-					compress: {},
-					mangle: true, // Note `mangle.properties` is `false` by default.
-					module: false,
-					output: null,
-					toplevel: false,
-					nameCache: null,
-					ie8: false,
-					keep_classnames: undefined,
-					keep_fnames: false,
-					safari10: false,
-				},
-				extractComments: true,
-			}),
-		],
-	},
+	}
 }
