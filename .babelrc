@@ -21,6 +21,14 @@
 		],
 		[
 			"@babel/plugin-proposal-class-properties" // 支持class
+		],
+		[
+			"import",
+			{
+				"libraryName": "antd",
+				"libraryDirectory": "es",
+				"style": "css"
+			}
 		]
 	]
 }

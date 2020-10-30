@@ -6,7 +6,38 @@
     <title>REACT APP</title>
   </head>
   <body>
-    <div id="app">
-    </div>
+    <div id="app"></div>
+    <script type="text/javascript">
+      (function (win) {
+        var tid
+        function refreshRem() {
+          let designSize = 1920 // 参照尺寸
+          let html = document.documentElement
+          let wW = html.clientWidth // 窗口宽度
+          let rem = (wW * 100) / designSize // 约定1rem = 100px
+          html.style.fontSize = rem + 'px'
+        }
+
+        win.addEventListener(
+          'resize',
+          function () {
+            clearTimeout(tid)
+            tid = setTimeout(refreshRem, 200)
+          },
+          false
+        )
+        win.addEventListener(
+          'pageshow',
+          function (e) {
+            if (e.persisted) {
+              clearTimeout(tid)
+              tid = setTimeout(refreshRem, 300)
+            }
+          },
+          false
+        )
+        refreshRem()
+      })(window)
+    </script>
   </body>
 </html>

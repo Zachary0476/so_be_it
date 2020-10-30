@@ -3,8 +3,8 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const ExtractTextPlugin = require("extract-text-webpack-plugin"); 被mini-css..替代
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css抽离
-const TerserPlugin = require('terser-webpack-plugin'); // css压缩
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HappyPack = require('happypack'); // 打包进程优化
 const os = require('os'); // 配合多进程打包
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
@@ -12,20 +12,26 @@ var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'); // 友好�
 const notifier = require('node-notifier'); // 配合友好提示
 const chalk = require('chalk');
 
+
 module.exports = {
-	entry: path.resolve(__dirname, '../src/index.js'),
+	entry: {
+		"main": path.resolve(__dirname, '../src/index.js'),
+		// "vendor_react": ["react", "react-dom", "react-router", "react-router-dom", "react-redux", "redux", "redux-thunk"]
+	},
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: 'js/[name].[hash:8].bundle.js',
+		chunkFilename: 'js/[name]-[contenthash:7].js',
 		publicPath: '/'
 	},
 	module: {
 		rules: [
 			// js-loader
 			{
-				test: /\.js$/,
-				exclude: /(node_modules|bower_components)/,
+				test: /\.js|jsx$/,
 				loader: 'happypack/loader?id=happyBabel',
+				exclude: /(node_modules|bower_components)/,
+				include: path.resolve(__dirname, '../src')
 			},
 			// ts-loader
 			{ test: /\.tsx?$/, loader: "ts-loader" },
@@ -61,11 +67,12 @@ module.exports = {
 						}
 					}
 				],
-				exclude: /node_modules/
+				exclude: /node_modules/,
+				sideEffects: true
 			},
 			// 图片文件
 			{
-				test: /\.(png|jpg|jpeg|gif)$/i,
+				test: /\.(png|jpg|jpeg|gif|ico)$/i,
 				use: [
 					{
 						loader: 'url-loader',
@@ -98,6 +105,16 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
+		new CopyWebpackPlugin(
+			{
+				patterns: [
+					{
+						from: path.join(__dirname, '../src/assets/imgs'),
+						to: path.join(__dirname, '../dist/img')
+					}
+				],
+			}
+		),
 		new HappyPack({
 			//用id来标识 happypack处理那里类文件
 			id: 'happyBabel',
@@ -114,7 +131,7 @@ module.exports = {
 			title: 'myApp',
 			template: path.join(__dirname, '../src/index.html'),
 			filename: 'index.html',
-			// favicon: '',
+			favicon: path.join(__dirname, '../favicon.ico'),
 			inject: true,
 			hash: true,
 			// chunks 多页
@@ -123,7 +140,7 @@ module.exports = {
 			// 	filename: devMode ? '[name].css' : '[name].[hash].css',
 			//  chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
 			filename: 'css/[name].[hash:5].css', // 入口模块文件输出
-			chunkFilename: '[id].[hash:5].css', // 非入口模块文件输出
+			chunkFilename: 'css/[id].[hash:5].css', // 非入口模块文件输出
 		}),
 		// 友好的终端错误显示方式
 		new FriendlyErrorsPlugin({
@@ -150,56 +167,9 @@ module.exports = {
 		}),
 	],
 	resolve: {
-		extensions: ['.ts', 'tsx', '.jsx', '.js', 'json'],
+		extensions: ['.jsx', '.js', 'json'],
 		alias: {
-			'@': path.resolve(__dirname, 'src')
+			'@': path.join(__dirname, '../src')
 		}
-	},
-	optimization: {
-		// minimize: true, // 根据mode区分优化策略
-		splitChunks: {
-			chunks: 'all',
-			// minSize: 20000, // 最小分割大小
-			// maxAsyncRequests: 30, // 按需加载时的最大并行请求数。
-			// maxInitialRequests: 30, // 入口点的最大并行请求数。
-			automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
-			cacheGroups: {
-				defaultVendors: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					minChunks: 2,
-					priority: -10,
-				},
-				default: {
-					name: 'common',
-					minChunks: 2,
-					priority: -20,
-					reuseExistingChunk: true // 已提取复用
-				}
-			}
-		},
-		minimizer: [
-			new TerserPlugin({
-				exclude: /node_modules/,
-				// cache: true, // webpack 5已忽略 默认就是true
-				parallel: true, // 多进程并行运行 强烈建议使用
-				// sourceMap: true, // 如果在生产环境中使用 source-maps，必须设置为 true
-				terserOptions: {
-					ecma: undefined,
-					parse: {},
-					compress: {},
-					mangle: true, // Note `mangle.properties` is `false` by default.
-					module: false,
-					output: null,
-					toplevel: false,
-					nameCache: null,
-					ie8: false,
-					keep_classnames: undefined,
-					keep_fnames: false,
-					safari10: false,
-				},
-				extractComments: true,
-			}),
-		],
-	},
+	}
 }
