@@ -13,9 +13,11 @@ export const errRoutes = [
 	{
 		path: '/login',
 		component: Login,
+		exact: true
 	}, {
 		path: '/404',
 		component: notFound,
+		exact: true
 	}
 ]
 /* -----------------------------------------对应以上固定路由 end------------------------------------------------------------------- */

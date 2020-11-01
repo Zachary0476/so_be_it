@@ -8,7 +8,8 @@ module.exports = merge(baseConfig, {
 	devServer: {
 		contentBase: path.join(__dirname, "../src/assets/"),
 		compress: true,
-		host: "0.0.0.0",
+		// host: "0.0.0.0",
+		host: "127.0.0.1",
 		hot: true,
 		inline: true,
 		noInfo: true,
