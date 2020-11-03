@@ -1,10 +1,9 @@
 import React from 'react'
 /* 固定路由 */
 const Login = React.lazy(() => import(/* webpackChunkName: "login" */ `@/pages/login`))
-const notFound = React.lazy(() => import(/* webpackChunkName: "not-found" */ `@/pages/common/not-found`))
+const NotFound = React.lazy(() => import(/* webpackChunkName: "not-found" */ `@/pages/common/not-found`))
 /* 核心路由 */
-const Index = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/index`))
-const Home = React.lazy(() => import(/* webpackChunkName: "/home" */ `@/pages/home`))
+const Welcome = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/welcome`))
 // ...
 
 
@@ -16,7 +15,7 @@ export const errRoutes = [
 		exact: true
 	}, {
 		path: '/404',
-		component: notFound,
+		component: NotFound,
 		exact: true
 	}
 ]
@@ -25,13 +24,8 @@ export const errRoutes = [
 /* =========================================对应以上构建在App组件下的核心路由 start================================================= */
 export const mainRoutes = [
 	{
-		path: '/index',
-		component: Index,
-		exact: true
-	},
-	{
-		path: '/home',
-		component: Home,
+		path: '/welcome',
+		component: Welcome,
 		exact: true
 	}
 ]
