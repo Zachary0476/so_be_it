@@ -4,20 +4,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const ExtractTextPlugin = require("extract-text-webpack-plugin"); 被mini-css..替代
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // css抽离
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HappyPack = require('happypack'); // 打包进程优化
 const os = require('os'); // 配合多进程打包
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'); // 友好提示
 const notifier = require('node-notifier'); // 配合友好提示
 const chalk = require('chalk');
-
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 
 module.exports = {
-	entry: {
-		"main": path.resolve(__dirname, '../src/index.js'),
-		// "vendor_react": ["react", "react-dom", "react-router", "react-router-dom", "react-redux", "redux", "redux-thunk"]
-	},
+	entry: path.resolve(__dirname, '../src/index.js')
+	,
 	output: {
 		path: path.resolve(__dirname, '../dist'),
 		filename: 'js/[name].[hash:8].bundle.js',
@@ -105,16 +104,16 @@ module.exports = {
 	},
 	plugins: [
 		new CleanWebpackPlugin(),
-		new CopyWebpackPlugin(
-			{
-				patterns: [
-					{
-						from: path.join(__dirname, '../src/assets/imgs'),
-						to: path.join(__dirname, '../dist/img')
-					}
-				],
-			}
-		),
+		// new CopyWebpackPlugin(
+		// 	{
+		// 		patterns: [
+		// 			{
+		// 				from: path.join(__dirname, '../src/assets/imgs'),
+		// 				to: path.join(__dirname, '../dist/img')
+		// 			}
+		// 		],
+		// 	}
+		// ),
 		new HappyPack({
 			//用id来标识 happypack处理那里类文件
 			id: 'happyBabel',
@@ -165,11 +164,16 @@ module.exports = {
 			//是否每次编译之间清除控制台
 			clearConsole: true,
 		}),
+		// new BundleAnalyzerPlugin(),
+		new AntdDayjsWebpackPlugin()
 	],
 	resolve: {
 		extensions: ['.jsx', '.js', 'json'],
 		alias: {
 			'@': path.join(__dirname, '../src')
 		}
-	}
+	},
+	performance: {
+		hints: false
+	},
 }

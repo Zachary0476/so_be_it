@@ -26,9 +26,11 @@
 			"import",
 			{
 				"libraryName": "antd",
-				"libraryDirectory": "es",
 				"style": "css"
 			}
 		]
+		// [
+		// 	"react-hot-loader/babel" // react专用热更新保存状态
+		// ]
 	]
 }

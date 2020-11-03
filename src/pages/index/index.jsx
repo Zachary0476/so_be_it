@@ -16,6 +16,7 @@ class Index extends React.Component {
       <div>
         <button onClick={() => this.add()}>+1</button>
         <div>{this.props.count}</div>
+        <div>99999</div>
       </div>
     )
   }

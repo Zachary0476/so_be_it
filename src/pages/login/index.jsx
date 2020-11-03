@@ -23,7 +23,7 @@ export default class Login extends React.Component {
             <div className={loginStyle.login_logo_left}>
               <span className={loginStyle.login_logo_img}> </span>
               <span className={loginStyle.login_logo_text}>
-                车联网大数据平台
+                车联网大数据
               </span>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default class Login extends React.Component {
               >
                 <Input
                   prefix={<UserOutlined className="site-form-item-icon" />}
-                  placeholder="用户名称"
+                  placeholder="请输入用户名称"
                 />
               </Form.Item>
               <Form.Item
@@ -75,7 +75,7 @@ export default class Login extends React.Component {
                 <Input
                   prefix={<LockOutlined className="site-form-item-icon" />}
                   type="password"
-                  placeholder="用户密码"
+                  placeholder="请输入用户密码"
                 />
               </Form.Item>
               <Form.Item>

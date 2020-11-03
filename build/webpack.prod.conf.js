@@ -7,9 +7,19 @@ module.exports = merge(baseConfig, {
 	optimization: {
 		// minimize: true, // 根据mode区分优化策略
 		splitChunks: {
-			chunks: 'initial',
-			automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
+			chunks: 'all',
+			maxInitialRequests: 6,
+			// automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
 			cacheGroups: {
+				// default: false,
+				// venderDefault: {
+				// 	// test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom|axios)[\\/]/,
+				// 	test: /[\\/]node_modules[\\/]/ && /[\\/]react[\\/]/ && /[\\/]react-dom[\\/]/ && /[\\/]react-router-dom[\\/]/ && /[\\/]redux[\\/]/ && /[\\/]react-redux[\\/]/,
+				// 	// test: /[\\/]node_modules[\\/]/,
+				// 	name: 'venderDefault',
+				// 	// minChunks: 2,
+				// 	priority: -5,
+				// },
 				vendors: {
 					test: /[\\/]node_modules[\\/]/,
 					name: 'vendors',
