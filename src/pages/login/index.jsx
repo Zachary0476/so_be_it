@@ -13,7 +13,7 @@ export default class Login extends React.Component {
     this.formRef.current.resetFields()
   }
   onFinish(values) {
-    this.props.history.push('/welcome')
+    this.props.history.push('/home')
   }
   render() {
     return (
@@ -22,9 +22,7 @@ export default class Login extends React.Component {
           <div className={loginStyle.login_logo}>
             <div className={loginStyle.login_logo_left}>
               <span className={loginStyle.login_logo_img}> </span>
-              <span className={loginStyle.login_logo_text}>
-                车联网大数据
-              </span>
+              <span className={loginStyle.login_logo_text}>车联网大数据</span>
             </div>
           </div>
           <div className={loginStyle.login_form}>
