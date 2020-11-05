@@ -13,7 +13,7 @@ export default class Login extends React.Component {
     this.formRef.current.resetFields()
   }
   onFinish(values) {
-    this.props.history.push('/home')
+    this.props.history.push('/admin/index')
   }
   render() {
     return (

@@ -1,38 +1,28 @@
 import React from 'react'
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
-// import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
-import { mainRoutes, errRoutes } from '@/router/index' //引入routerdom
-import Loading from '@/pages/loading'
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom' //引入routerdom
+import { adminRoutes } from '@/router/index' //引入routerdom
+import MyLayout from '@/components/layout'
 
-const rootRouter = errRoutes.concat(mainRoutes)
-class App extends React.Component {
-  constructor() {
-    super()
-  }
-  render() {
-    return (
-      <HashRouter>
-        <React.Suspense fallback={<Loading />}>
-          <Switch>
-            <Redirect exact={true} from="/" to="/login" />
-            {rootRouter.map((route) => {
-              if (route.children && route.children.length > 0) {
-                return (
-                  <Route
-                    path="/home/:path"
-                    exact={true}
-                    key={route.path}
-                    component={() => <route.component />}
-                  ></Route>
-                )
-              }
-              return <Route key={route.path} {...route}></Route>
-            })}
-            <Route component={errRoutes[1].component}></Route>
-          </Switch>
-        </React.Suspense>
-      </HashRouter>
-    )
-  }
+function App() {
+  return (
+    <MyLayout>
+      <Switch>
+        {adminRoutes.map((route) => {
+          return (
+            <Route
+              path={route.path}
+              key={route.path}
+              exact={route.exact}
+              render={(routeProps) => {
+                return <route.component {...routeProps} />
+              }}
+            />
+          )
+        })}
+        {/* <Redirect to="/404" /> */}
+      </Switch>
+    </MyLayout>
+  )
 }
-export default App
+
+export default withRouter(App)

@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
+import { mainRoutes } from '@/router/index' //引入routerdom
 // 样式初始化
 import 'normalize.css';
 // icon
@@ -17,22 +19,41 @@ import zhCN from 'antd/lib/locale/zh_CN';// 由于 antd 组件的默认文案是
 // import 'antd/dist/antd.css'; // 已使用插件引入
 // App
 import './styles/global.css';
-import App from './pages/App';
+import App from '@/pages/App';
+import Loading from '@/pages/common/loading'
 
 
-if (module.hot) {
-	module.hot.accept(() => {
-		ReactDom.render(<Provider store={store}>
-			<ConfigProvider locale={zhCN}>
-				<App></App>
-			</ConfigProvider>
-		</Provider >, document.getElementById('app'));
-	})
-}
+
+// if (module.hot) {
+// 	module.hot.accept(() => {
+// 		<App></App>
+// 	})
+// }
 // 通过Provider连接react和redux
 ReactDom.render(<Provider store={store}>
 	<ConfigProvider locale={zhCN}>
-		<App></App>
+		<HashRouter>
+			<React.Suspense fallback={<Loading />}>
+				<Switch>
+					<Route
+						path="/admin"
+						render={(routeProps) => <App {...routeProps} />}
+					></Route>
+					{mainRoutes.map((route) => {
+						return (
+							<Route
+								path={route.path}
+								key={route.path}
+								exact={true}
+								component={route.component}
+							></Route>
+						)
+					})}
+					<Redirect exact={true} from="/" to="/login" />
+					<Redirect to="/404" />
+				</Switch>
+			</React.Suspense>
+		</HashRouter>
 	</ConfigProvider>
 </Provider >, document.getElementById('app'));
 
