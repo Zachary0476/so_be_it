@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
-import { mainRoutes } from '@/router/index' //引入routerdom
+import { mainRoutes } from '@/router/index' //引入router
 // 样式初始化
 import 'normalize.css';
 // icon
@@ -24,11 +24,6 @@ import Loading from '@/pages/common/loading'
 
 
 
-// if (module.hot) {
-// 	module.hot.accept(() => {
-// 		<App></App>
-// 	})
-// }
 // 通过Provider连接react和redux
 ReactDom.render(<Provider store={store}>
 	<ConfigProvider locale={zhCN}>

@@ -1,66 +1,74 @@
-import React from 'react'
-import { Link } from 'react-router-dom' //引入routerdom
+import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom' //引入routerdom
 import { Layout, Menu } from 'antd'
+import { adminRoutes } from '@/router/index' //引入router
+import layStyle from './index.less' //引入router
+
 const { SubMenu } = Menu
-
 const { Header, Content, Footer, Sider } = Layout
-import { adminRoutes } from '@/router/index'
 
-function MyLayout(props) {
-  const renderList = (routeList) => {
+export default class MyLayout extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      collapsed: false,
+    }
+  }
+  renderList(routeList) {
     return routeList.map((route) => {
-      if (route.child && route.child.length > 0) {
+      if (route.children && route.children.length > 0) {
         return (
           <SubMenu key={route.key} icon={route.icon} title={route.name}>
-            {renderList(route.child)}
+            {this.renderList(route.children)}
           </SubMenu>
         )
       } else {
         return (
           <Menu.Item key={route.key} icon={route.icon}>
-            <Link to={route.path}>{route.name}</Link>
+            <NavLink to={route.path} replace>
+              {route.name}
+            </NavLink>
           </Menu.Item>
         )
       }
     })
   }
+  onCollapse(collapsed) {
+    this.setState({ collapsed })
+  }
 
-  return (
-    <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {
-          console.log(broken)
-        }}
-        onCollapse={(collapsed, type) => {
-          console.log(collapsed, type)
-        }}
-      >
-        <div className="logo" />
-        <Menu theme="dark" mode="inline" defaultSelectedKeys={['0000']}>
-          {renderList(adminRoutes)}
-        </Menu>
-      </Sider>
-      <Layout>
-        <Header
-          className="site-layout-sub-header-background"
-          style={{ padding: 0 }}
-        />
-        <Content style={{ margin: '.1rem .1rem 0' }}>
-          <div
-            className="site-layout-background"
-            style={{ padding: 24, minHeight: 360 }}
-          >
-            {props.children}
-          </div>
-        </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+  render() {
+    const { collapsed } = this.state
+    return (
+      <Layout style={{ minHeight: '100vh' }}>
+        <Sider
+          collapsible
+          collapsed={collapsed}
+          onCollapse={() => this.onCollapse(!this.state.collapsed)}
+        >
+          <div className={layStyle.logo} />
+          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+            {this.renderList(adminRoutes)}
+          </Menu>
+        </Sider>
+        <Layout className={layStyle.white_background}>
+          <Header
+            className={layStyle.white_background}
+            style={{ padding: 0 }}
+          />
+          <Content style={{ margin: '0 16px' }}>
+            <div
+              className={layStyle.white_background}
+              style={{ padding: 24, minHeight: 360 }}
+            >
+              {this.props.children}
+            </div>
+          </Content>
+          <Footer style={{ textAlign: 'center' }}>
+            Ant Design ©2018 Created by Ant UED
+          </Footer>
+        </Layout>
       </Layout>
-    </Layout>
-  )
+    )
+  }
 }
-
-export default MyLayout

@@ -11,15 +11,6 @@ module.exports = merge(baseConfig, {
 			maxInitialRequests: 6,
 			// automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
 			cacheGroups: {
-				// default: false,
-				// venderDefault: {
-				// 	// test: /[\\/]node_modules[\\/](react|react-dom|react-router-dom|axios)[\\/]/,
-				// 	test: /[\\/]node_modules[\\/]/ && /[\\/]react[\\/]/ && /[\\/]react-dom[\\/]/ && /[\\/]react-router-dom[\\/]/ && /[\\/]redux[\\/]/ && /[\\/]react-redux[\\/]/,
-				// 	// test: /[\\/]node_modules[\\/]/,
-				// 	name: 'venderDefault',
-				// 	// minChunks: 2,
-				// 	priority: -5,
-				// },
 				vendors: {
 					test: /[\\/]node_modules[\\/]/,
 					name: 'vendors',
