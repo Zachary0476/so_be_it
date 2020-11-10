@@ -5,20 +5,20 @@ const TerserPlugin = require('terser-webpack-plugin'); // css压缩
 module.exports = merge(baseConfig, {
 	mode: 'production',
 	optimization: {
+		runtimeChunk: true,
 		// minimize: true, // 根据mode区分优化策略
 		splitChunks: {
-			chunks: 'all',
+			chunks: 'async',
 			maxInitialRequests: 6,
-			// automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
+			automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
 			cacheGroups: {
-				vendors: {
-					test: /[\\/]node_modules[\\/]/,
-					name: 'vendors',
-					priority: -10
-				},
+				// defaultVenders: {
+				// 	chunks: 'all',
+				// 	test: /[\\/]node_modules[\\/]/,
+				// 	priority: -10,
+				// },
 				default: {
 					minChunks: 2,
-					name: 'default',
 					priority: -20,
 					reuseExistingChunk: true
 				}

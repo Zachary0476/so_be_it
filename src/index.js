@@ -23,7 +23,6 @@ import App from '@/pages/App';
 import Loading from '@/pages/common/loading'
 
 
-
 // 通过Provider连接react和redux
 ReactDom.render(<Provider store={store}>
 	<ConfigProvider locale={zhCN}>

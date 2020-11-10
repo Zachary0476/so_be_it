@@ -7,7 +7,7 @@ export default class Index extends Component {
     render() {
         return (
             <div className={loadStyle.loading}>
-                <Spin tip="再等等，我在加载呐..." className={loadStyle.spin_font}></Spin>
+                <Spin tip="遇事莫慌，我马上就好..." className={loadStyle.spin_font}></Spin>
             </div>
         )
     }

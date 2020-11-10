@@ -11,10 +11,9 @@ const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length });
 var FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin'); // 友好提示
 const notifier = require('node-notifier'); // 配合友好提示
 const chalk = require('chalk');
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const AntdDayjsWebpackPlugin = require('antd-dayjs-webpack-plugin')
 
-module.exports = {
+const webpackBaseConfig = {
 	entry: path.resolve(__dirname, '../src/index.js')
 	,
 	output: {
@@ -29,7 +28,7 @@ module.exports = {
 			{
 				test: /\.js|jsx$/,
 				loader: 'happypack/loader?id=happyBabel',
-				exclude: /(node_modules|bower_components)/,
+				exclude: /node_modules/,
 				include: path.resolve(__dirname, '../src')
 			},
 			// ts-loader
@@ -174,6 +173,15 @@ module.exports = {
 		}
 	},
 	performance: {
-		hints: false
+		hints: 'error'
+	},
+	externals: {
 	},
 }
+
+if (process.env.ANALYZ_PORT === 'true' && process.env.NODE_ENV === 'production') {
+	const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+	webpackBaseConfig.plugins.push(new BundleAnalyzerPlugin())
+}
+
+module.exports = webpackBaseConfig
