@@ -12,11 +12,11 @@ module.exports = merge(baseConfig, {
 			maxInitialRequests: 6,
 			automaticNameDelimiter: '_', // 指定生成文件名称间的间隔符
 			cacheGroups: {
-				// defaultVenders: {
-				// 	chunks: 'all',
-				// 	test: /[\\/]node_modules[\\/]/,
-				// 	priority: -10,
-				// },
+				defaultVenders: {
+					chunks: 'all',
+					test: /[\\/]node_modules[\\/]/,
+					priority: -10,
+				},
 				default: {
 					minChunks: 2,
 					priority: -20,

@@ -1,74 +1,42 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom' //引入routerdom
-import { Layout, Menu } from 'antd'
-import { adminRoutes } from '@/router/index' //引入router
+// import { adminRoutes } from '@/router/index' //引入router
 import layStyle from './index.less' //引入router
-
-const { SubMenu } = Menu
-const { Header, Content, Footer, Sider } = Layout
+import { Row, Col } from 'antd';
 
 export default class MyLayout extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      collapsed: false,
     }
-  }
-  renderList(routeList) {
-    return routeList.map((route) => {
-      if (route.children && route.children.length > 0) {
-        return (
-          <SubMenu key={route.key} icon={route.icon} title={route.name}>
-            {this.renderList(route.children)}
-          </SubMenu>
-        )
-      } else {
-        return (
-          <Menu.Item key={route.key} icon={route.icon}>
-            <NavLink to={route.path} replace>
-              {route.name}
-            </NavLink>
-          </Menu.Item>
-        )
-      }
-    })
-  }
-  onCollapse(collapsed) {
-    this.setState({ collapsed })
   }
 
   render() {
-    const { collapsed } = this.state
     return (
-      <Layout style={{ minHeight: '100vh' }}>
-        <Sider
-          collapsible
-          collapsed={collapsed}
-          onCollapse={() => this.onCollapse(!this.state.collapsed)}
-        >
-          <div className={layStyle.logo} />
-          <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-            {this.renderList(adminRoutes)}
-          </Menu>
-        </Sider>
-        <Layout className={layStyle.white_background}>
-          <Header
-            className={layStyle.white_background}
-            style={{ padding: 0 }}
-          />
-          <Content style={{ margin: '0 16px' }}>
-            <div
-              className={layStyle.white_background}
-              style={{ padding: 24, minHeight: 360 }}
-            >
-              {this.props.children}
-            </div>
-          </Content>
-          <Footer style={{ textAlign: 'center' }}>
-            Ant Design ©2018 Created by Ant UED
-          </Footer>
-        </Layout>
-      </Layout>
+      <>
+        <Row className={layStyle.container}>
+          <Col span={24} className={layStyle.header}></Col>
+        </Row>
+        <Row >
+          <Col span={24} className={layStyle.nav}>
+            <Row>
+              <Col span={12} offset={6} className={layStyle.nav_item}>
+                <NavLink to="/my-blog/home">首页</NavLink>
+                <NavLink to="/my-blog/simple-life">平凡岁月</NavLink>
+                <NavLink to="/my-blog/ex-technology">技术交流</NavLink>
+                <NavLink to="/my-blog/blog-message">blog留言</NavLink>
+                <NavLink to="/my-blog/my-resume">档案</NavLink>
+                <NavLink to="/my-blog/about-me">关于我的</NavLink>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row>
+          <Col span={12} offset={6} className={layStyle.body}>
+            {this.props.children}
+          </Col>
+        </Row>
+      </>
     )
   }
 }

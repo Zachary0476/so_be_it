@@ -173,7 +173,7 @@ const webpackBaseConfig = {
 		}
 	},
 	performance: {
-		hints: 'error'
+		hints: false
 	},
 	externals: {
 	},

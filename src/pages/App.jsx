@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom' //引入routerdom
-import { adminRoutes } from '@/router/index' //引入routerdom
-import MyLayout from '@/components/layout'
+import { adminRoutes } from '@/router' //引入routerdom
+import MyLayout from '@/components/layout' //引入routerdom
 
 const swicthComponents = (arr) => {
   return arr.map((route) => {

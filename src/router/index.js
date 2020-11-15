@@ -1,24 +1,18 @@
 import React from 'react'
-import { AndroidFilled, GithubFilled } from '@ant-design/icons'
 /* 固定路由 */
-const Login = React.lazy(() => import(/* webpackChunkName: "login" */ `@/pages/login`))
 const NotFound = React.lazy(() => import(/* webpackChunkName: "not-found" */ `@/pages/common/not-found/index`))
 /* 核心路由 */
-const Index = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/admin/index`))
-const SysManage = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/admin/sys-manage`))
-const SysMagAuth = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/admin/sys-manage/auth`))
-const SysMagMenu = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/admin/sys-manage/menu`))
-const StatusManage = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/admin/status-manage`))
+const Home = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/home`))
+const AboutMe = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/about-me`))
+const MyResume = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/my-resume`))
+const BlogMessage = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/blog-message`))
+const ExTechnology = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/ex-technology`))
+const SimpleLife = React.lazy(() => import(/* webpackChunkName: "index" */ `@/pages/simple-life`))
 // ...
-
 
 /* -----------------------------------------对应以上固定路由 start----------------------------------------------------------------- */
 export const mainRoutes = [
 	{
-		path: '/login',
-		component: Login,
-		exact: true
-	}, {
 		path: '/404',
 		component: NotFound,
 		exact: true
@@ -29,44 +23,52 @@ export const mainRoutes = [
 /* =========================================对应以上构建在App组件下的核心路由 start================================================= */
 export const adminRoutes = [
 	{
-		path: '/admin/index',
-		component: Index,
+		path: '/my-blog/home',
+		component: Home,
 		exact: true,
 		name: '首页模块',
 		key: '0000',
-		icon: <AndroidFilled />
+		icon: ''
 	},
 	{
-		path: '/admin/sys-manage',
-		// component: SysManage,
+		path: '/my-blog/about-me',
+		component: AboutMe,
 		exact: true,
-		name: '管理模块',
+		name: '我的简历',
 		key: '1000',
-		icon: <GithubFilled />,
-		children: [
-			{
-				path: '/admin/sys-manage/auth',
-				component: SysMagAuth,
-				exact: true,
-				name: '权限管理',
-				key: '10000001',
-			},
-			{
-				path: '/admin/sys-manage/menu',
-				component: SysMagMenu,
-				exact: true,
-				name: '菜单管理',
-				key: '10000002'
-			}
-		]
+		icon: ''
 	},
 	{
-		path: '/admin/status-manage',
-		component: StatusManage,
+		path: '/my-blog/my-resume',
+		component: MyResume,
 		exact: true,
-		name: '状态管理',
-		key: '2000',
-		icon: <AndroidFilled />
+		name: '我的简历',
+		key: '1000',
+		icon: ''
+	},
+	{
+		path: '/my-blog/blog-message',
+		component: BlogMessage,
+		exact: true,
+		name: '我的简历',
+		key: '1000',
+		icon: ''
+	},
+	{
+		path: '/my-blog/ex-technology',
+		component: ExTechnology,
+		exact: true,
+		name: '我的简历',
+		key: '1000',
+		icon: ''
+	},
+	{
+		path: '/my-blog/simple-life',
+		component: SimpleLife,
+		exact: true,
+		name: '我的简历',
+		key: '1000',
+		icon: ''
 	},
 ]
 /* =========================================对应以上构建在App组件下的核心路由 end=================================================== */

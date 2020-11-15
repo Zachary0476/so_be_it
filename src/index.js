@@ -30,7 +30,7 @@ ReactDom.render(<Provider store={store}>
 			<React.Suspense fallback={<Loading />}>
 				<Switch>
 					<Route
-						path="/admin"
+						path="/my-blog"
 						render={(routeProps) => <App {...routeProps} />}
 					></Route>
 					{mainRoutes.map((route) => {

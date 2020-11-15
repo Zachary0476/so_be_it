@@ -1,12 +1,6 @@
-html {
-}
+html {}
 
 body {
-  font-size: 14px;
-}
-
-.lp_body {
-  width: 100vw;
-  height: 100vh;
-  background-color: #ccc;
+  font-size       : 14px;
+  background-color: #fffbf0 !important;
 }

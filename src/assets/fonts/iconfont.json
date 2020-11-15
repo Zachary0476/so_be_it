@@ -1,23 +1,30 @@
 {
-  "id": "2163653",
-  "name": "zachary",
+  "id": "2204165",
+  "name": "SSR_react",
   "font_family": "iconfont",
   "css_prefix_text": "icon-",
   "description": "",
   "glyphs": [
     {
-      "icon_id": "4630724",
-      "name": "account authority",
-      "font_class": "accountauthority",
-      "unicode": "e60e",
-      "unicode_decimal": 58894
+      "icon_id": "15838432",
+      "name": "browse",
+      "font_class": "browse",
+      "unicode": "e666",
+      "unicode_decimal": 58982
     },
     {
-      "icon_id": "4630730",
-      "name": "information",
-      "font_class": "information",
-      "unicode": "e610",
-      "unicode_decimal": 58896
+      "icon_id": "15838483",
+      "name": "good",
+      "font_class": "good",
+      "unicode": "e673",
+      "unicode_decimal": 58995
+    },
+    {
+      "icon_id": "15838508",
+      "name": "more",
+      "font_class": "more",
+      "unicode": "e679",
+      "unicode_decimal": 59001
     }
   ]
 }
