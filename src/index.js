@@ -43,7 +43,7 @@ ReactDom.render(<Provider store={store}>
 							></Route>
 						)
 					})}
-					<Redirect exact={true} from="/" to="/login" />
+					<Redirect exact={true} from="/" to="/my-blog/home" />
 					<Redirect to="/404" />
 				</Switch>
 			</React.Suspense>

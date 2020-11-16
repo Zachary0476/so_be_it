@@ -19,6 +19,7 @@
             font-size  : .16rem;
             font-weight: 400;
             line-height: .4rem;
+            cursor     : pointer;
         }
     }
 
@@ -66,9 +67,34 @@
             .article_foot {
                 display        : flex;
                 justify-content: space-between;
-                font-size      : .06rem;
+                height         : .3rem;
+                line-height    : .3rem;
+                margin-top     : .15rem;
 
-                .article_operate {
+
+                .article_foot_left {
+                    height       : .3rem;
+                    line-height  : .3rem;
+                    overflow     : hidden;
+                    text-overflow: ellipsis;
+                    white-space  : nowrap;
+
+                    .article_foot_left_cag {
+                        display     : inline-block;
+                        margin-right: .1rem;
+                    }
+
+                    span {
+                        font-size: .14rem;
+                        cursor   : pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .article_foot_right {
                     display        : flex;
                     justify-content: space-around;
                     height         : .3rem;
@@ -77,7 +103,20 @@
                     .article_operate_item {
                         margin-right: .15rem;
                         cursor      : pointer;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
                     }
+
+                    span {
+                        font-size: .14rem;
+                    }
+                }
+
+                .article_foot_time {
+                    height     : .1rem;
+                    line-height: .1rem;
                 }
             }
         }
@@ -99,17 +138,22 @@
     }
 
     .home_right_msg {
-        height         : 5.5rem;
         display        : flex;
         justify-content: space-around;
         border-top     : 0.01rem solid #ccc;
         padding-top    : .3rem;
+        height         : 1.2rem;
 
         .home_right_msg_item {
-            width        : .6rem;
-            height       : .6rem;
+            width        : .5rem;
+            height       : .5rem;
             cursor       : pointer;
             border-radius: 50%;
+
+            span {
+                width : .5rem;
+                height: .5rem;
+            }
 
             &:nth-child(1) {
                 color: red;
@@ -140,5 +184,40 @@
                 }
             }
         }
+    }
+
+    .home_right_msg_new {
+        border-bottom: 0.01rem solid #ccc;
+        margin-bottom: .2rem;
+        height       : .5rem;
+        line-height  : .5rem;
+        font-size    : .18rem;
+        font-weight  : 700;
+    }
+
+    .home_right_msg_arts {
+        display        : flex;
+        flex-direction : column;
+        justify-content: flex-start;
+        margin-bottom  : .2rem;
+
+        .home_right_msg_arts_piont {
+            display     : inline-block;
+            font-weight : 900;
+            margin-right: .05rem;
+        }
+
+        span {
+            overflow     : hidden;
+            text-overflow: ellipsis;
+            white-space  : nowrap;
+            cursor       : pointer;
+
+            &:hover {
+                text-decoration: underline;
+                color          : skyblue;
+            }
+        }
+
     }
 }
