@@ -1,37 +1,39 @@
 import React, { Component } from 'react'
-import { Carousel, Radio } from 'antd';
+import { Carousel } from 'antd';
+import one from '@/assets/imgs/1.jpeg'
+import two from '@/assets/imgs/2.jpg'
+import three from '@/assets/imgs/3.jpg'
+import four from '@/assets/imgs/4.jpg'
 
 const contentStyle = {
     height: '3rem',
     color: '#fff',
     lineHeight: '3rem',
     textAlign: 'center',
-    background: 'skyblue',
+    background: '#f4f4f4',
+    cursor: 'pointer'
 };
+const imgStyle = {
+    width: '100%'
+}
 
 export const PositionCarouselDemo = () => {
-    const [dotPosition, setDotPosition] = React.useState('top');
-
-    const handlePositionChange = ({ target: { value } }) => {
-        setDotPosition(value);
-    };
-
     return (
         <>
-            <Carousel dotPosition={'bottom'} autoplay={false}>
+            <Carousel autoplay>
                 <div>
-                    <h3 style={contentStyle}>1</h3>
+                    <div style={contentStyle}><img src={one} style={imgStyle} /></div>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>2</h3>
+                    <div style={contentStyle}><img src={two} style={imgStyle} /></div>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>3</h3>
+                    <div style={contentStyle}><img src={three} style={imgStyle} /></div>
                 </div>
                 <div>
-                    <h3 style={contentStyle}>4</h3>
+                    <div style={contentStyle}><img src={four} style={imgStyle} /></div>
                 </div>
             </Carousel>
         </>
-    );
+    )
 }

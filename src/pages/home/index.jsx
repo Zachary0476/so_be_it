@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import homeStyle from './index.less'
 import { GithubOutlined, WeiboCircleOutlined, MailOutlined, AliwangwangOutlined, DashboardOutlined } from '@ant-design/icons';
 import test from '@/assets/imgs/test.jpg'
-import { PositionCarouselDemo } from './solider';
+import {PositionCarouselDemo} from './solider';
 
 export default class index extends Component {
     render() {
