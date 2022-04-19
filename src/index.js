@@ -21,6 +21,7 @@ import zhCN from 'antd/lib/locale/zh_CN';// 由于 antd 组件的默认文案是
 import './styles/global.css';
 import App from '@/pages/App';
 import Loading from '@/pages/common/loading'
+import http from '@/utils/http'
 
 
 // 通过Provider连接react和redux

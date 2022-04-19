@@ -1,38 +1,56 @@
+// 引入创建模块
 const express = require('express')
 const http = require('http')
-const bodyParse = require('body-parser')
-
+// const session = require('./config/session')
+// const mongoose = require('./config/mongodb')
+// 辅助模块
+const path = require('path')
+const badyParser = require('body-parser')
+// 使用redis
+// const redis = require('./config/redis')
+// 创建服务器
 const app = express()
 const server = http.createServer(app)
+// 解析
+// app.use(express.static(path.join(__dirname, '../views/dist')))
+app.use(badyParser.json({ limit: '1024kb' }))
+app.use(badyParser.urlencoded({ extended: true, limit: '1024kb' }))
+//设置跨域访问
+app.all('*', function (req, res, next) {
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+	res.header("X-Powered-By", ' 3.2.1')
+	res.header("Content-Type", "application/json;charset=utf-8");
+	next();
+});
+// session
+// app.use(session)
+// 后端路由配置
+app.use('/api', require('./router'))
+app.use('/login', (req, res) => {
+	// req.session.userinfo = '唐三'
+	res.send('登录成功')
+})
 
-// 标定静态资源文件托管目录
-// app.use(express.static(__dirname, '/dist'))
-// 解析JSON格式
-app.use(bodyParse.json({ limit: '50mb' }))
-// 解析二进制格式
-app.use(bodyParse.urlencoded({ extended: true, limit: '50mb' }))
-// 解析文本格式
-app.use(bodyParse.text())
+app.use('/record', (req, res) => {
+	res.send('部署成功')
+	// res.send(`${req.session.userinfo} 欢迎回来！！`)
+})
 
-// app.use((req, res, next) => {
-// 	res.send('网站维护中...')
-// })
-
-// 拦截path，进入路由分发
-app.use('/api', require('./router/index'))
-
-// 404 页面
-app.get('*', (req, res) => {
-	res.status(404).send('404')
+app.use('/destory', (req, res) => {
+	res.send('退出成功')
+	// req.session.destroy(err => {
+	// 	console.log(err)
+	// 	res.send('退出成功')
+	// })
 })
 
 // 错误处理中间件
-app.use((err, req, res, next) => {
-	res.send(`node服务器错误:${err}`)
+app.use('*', (err, req, res, next) => {
+	res.status(500).send('服务器正忙')
 })
-
-
-
-server.listen(8999, 'localhost', () => {
-	console.log('server is running at: http://127.0.0.1:8999');
+// 跑起来
+server.listen(8989, () => {
+	console.log('Server is running at http://localhost:8989');
 })

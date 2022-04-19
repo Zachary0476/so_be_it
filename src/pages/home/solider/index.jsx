@@ -17,14 +17,19 @@ const imgStyle = {
     width: '100%'
 }
 
-export const PositionCarouselDemo = () => {
+export const PositionCarouselDemo = (props) => {
     return (
         <>
             <Carousel autoplay>
-                <div>
-                    <div style={contentStyle}><img src={one} style={imgStyle} /></div>
-                </div>
-                <div>
+                {
+                    props.articles.map(bunner => {
+                        return <div key={bunner._id}>
+                            <div style={contentStyle}><img src={bunner.img} style={imgStyle} /></div>
+                        </div>
+                    })
+                }
+
+                {/* <div>
                     <div style={contentStyle}><img src={two} style={imgStyle} /></div>
                 </div>
                 <div>
@@ -32,7 +37,7 @@ export const PositionCarouselDemo = () => {
                 </div>
                 <div>
                     <div style={contentStyle}><img src={four} style={imgStyle} /></div>
-                </div>
+                </div> */}
             </Carousel>
         </>
     )

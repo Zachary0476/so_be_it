@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>REACT APP</title>
-    <!-- <script
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>REACT APP</title>
+  <!-- <script
       crossorigin
       src="https://unpkg.com/react@16/umd/react.production.min.js"
     ></script>
@@ -12,40 +13,42 @@
       crossorigin
       src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"
     ></script> -->
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="text/javascript">
-      ;(function (win) {
-        var tid
-        function refreshRem() {
-          let designSize = 1920 // 参照尺寸
-          let html = document.documentElement
-          let wW = html.clientWidth // 窗口宽度
-          let rem = (wW * 100) / designSize // 约定1rem = 100px
-          html.style.fontSize = rem + 'px'
-        }
+</head>
 
-        win.addEventListener(
-          'resize',
-          function () {
+<body>
+  <div id="app"></div>
+  <script type="text/javascript">
+    (function (win) {
+      var tid
+      function refreshRem() {
+        let designSize = 1920 // 参照尺寸
+        let html = document.documentElement
+        let wW = html.clientWidth // 窗口宽度
+        let rem = (wW * 100) / designSize // 约定1rem = 100px
+        html.style.fontSize = rem + 'px'
+      }
+
+      win.addEventListener(
+        'resize',
+        function () {
+          clearTimeout(tid)
+          tid = setTimeout(refreshRem, 200)
+        },
+        false
+      )
+      win.addEventListener(
+        'pageshow',
+        function (e) {
+          if (e.persisted) {
             clearTimeout(tid)
-            tid = setTimeout(refreshRem, 200)
-          },
-          false
-        )
-        win.addEventListener(
-          'pageshow',
-          function (e) {
-            if (e.persisted) {
-              clearTimeout(tid)
-              tid = setTimeout(refreshRem, 300)
-            }
-          },
-          false
-        )
-        refreshRem()
-      })(window)
-    </script>
-  </body>
+            tid = setTimeout(refreshRem, 300)
+          }
+        },
+        false
+      )
+      refreshRem()
+    })(window)
+  </script>
+</body>
+
 </html>

@@ -1,12 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const { addArticle, getArticle } = require('../mongodb/controllers/articles')
 
 
-
-router.get('/abc', (req, res, next) => {
-	res.send('123')
-})
-
+router.get('/add', addArticle)
+router.get('/get', getArticle)
 
 
 module.exports = router

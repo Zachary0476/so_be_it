@@ -21,12 +21,12 @@ export default class MyLayout extends Component {
           <Col span={24} className={layStyle.nav}>
             <Row>
               <Col span={12} offset={6} className={layStyle.nav_item}>
-                <NavLink to="/my-blog/home">首页</NavLink>
-                <NavLink to="/my-blog/simple-life">平凡岁月</NavLink>
-                <NavLink to="/my-blog/ex-technology">技术交流</NavLink>
-                <NavLink to="/my-blog/blog-message">blog留言</NavLink>
-                <NavLink to="/my-blog/my-resume">档案</NavLink>
-                <NavLink to="/my-blog/about-me">关于我的</NavLink>
+                <NavLink activeClassName={layStyle.nav_selected} to="/my-blog/home">首页</NavLink>
+                <NavLink activeClassName={layStyle.nav_selected} to="/my-blog/simple-life">平凡岁月</NavLink>
+                <NavLink activeClassName={layStyle.nav_selected} to="/my-blog/ex-technology">技术交流</NavLink>
+                <NavLink activeClassName={layStyle.nav_selected} to="/my-blog/blog-message">blog留言</NavLink>
+                <NavLink activeClassName={layStyle.nav_selected} to="/my-blog/my-resume">档案</NavLink>
+                <NavLink activeClassName={layStyle.nav_selected} to="/my-blog/about-me">关于我的</NavLink>
               </Col>
             </Row>
           </Col>

@@ -21,7 +21,16 @@ module.exports = merge(baseConfig, {
 			errors: true
 		},
 		port: 10214,
-		proxy: config.dev.proxyTable
+		proxy: {
+			assetsubDirctory: 'static',
+			assetsPublicPath: '/',
+			proxyTable: {
+				'/api': {
+					target: config.dev.BASE_API,
+					changeOrigin: true,
+				}
+			}
+		}
 	},
 	plugins: [
 		// 分析
